@@ -19,6 +19,8 @@ class DeGiro:
     __TRANSACTIONS_URL = 'https://trader.degiro.nl/reporting/secure/v4/transactions'
     __ORDERS_URL = 'https://trader.degiro.nl/reporting/secure/v4/order-history'
 
+    __BONDS_URL = 'https://trader.degiro.nl/product_search/secure/v5/bonds?'
+        
     __PLACE_ORDER_URL = 'https://trader.degiro.nl/trading/secure/v5/checkOrder'
     __ORDER_URL = 'https://trader.degiro.nl/trading/secure/v5/order/'
 
@@ -108,6 +110,21 @@ class DeGiro:
         return self.__request(DeGiro.__PRODUCT_SEARCH_URL, None, product_search_payload,
                               error_message='Could not get products.')['products']
 
+    def list_products(self, prod_type = None , limit = 1000000000):
+        
+        product_search_payload = {
+            'limit': limit,
+            'offset': 0,
+            'intAccount': self.client_info.account_id,
+            'sessionId': self.session_id
+        }
+        
+        if prod_type == 'bonds':        
+            return self.__request(DeGiro.__BONDS_URL, None, product_search_payload,
+                               error_message='Could not get products.')['products']
+        else:
+            raise Exception(f'Unknown request type: {prod_type}')
+            
     def product_info(self, product_id):
         product_info_payload = {
             'intAccount': self.client_info.account_id,
