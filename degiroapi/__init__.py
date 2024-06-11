@@ -16,7 +16,7 @@ class DeGiro:
     __GET_STOCKS_URL = 'https://trader.degiro.nl/products_s/secure/v5/stocks'
     __PRODUCT_SEARCH_URL = 'https://trader.degiro.nl/product_search/secure/v5/products/lookup'
     __PRODUCT_INFO_URL = 'https://trader.degiro.nl/product_search/secure/v5/products/info'
-    __TRANSACTIONS_URL = 'https://trader.degiro.nl/reporting/secure/v4/transactions'
+    __TRANSACTIONS_URL = 'https://trader.degiro.nl/portfolio-reports/secure/v4/transactions'
     __ORDERS_URL = 'https://trader.degiro.nl/reporting/secure/v4/order-history'
 
     __BONDS_URL = 'https://trader.degiro.nl/product_search/secure/v5/bonds?'
